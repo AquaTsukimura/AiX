@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ai X | The Ultimate Idol Client</title>
+    <title>Ai X | The Ultimate Hack Client</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
             --primary: #ff66b2;
             --secondary: #9d50bb;
-            --bg: #060608;
-            --card-bg: rgba(255, 255, 255, 0.03);
+            --bg: #040406;
+            --card-bg: rgba(255, 255, 255, 0.02);
             --text-main: #ffffff;
-            --text-dim: #a0a0a0;
+            --text-dim: #9ca3af;
             --font-head: 'Outfit', sans-serif;
             --font-body: 'Poppins', sans-serif;
         }
@@ -32,15 +32,17 @@
             font-family: var(--font-body);
             background-color: var(--bg);
             color: var(--text-main);
-            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        canvas {
+        #starfield {
             position: fixed;
             top: 0;
             left: 0;
             z-index: -1;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, #1a0b2e 0%, #040406 100%);
         }
 
         nav {
@@ -50,37 +52,39 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 10%;
-            background: rgba(6, 6, 8, 0.8);
-            backdrop-filter: blur(15px);
+            padding: 1.2rem 10%;
+            background: rgba(4, 4, 6, 0.8);
+            backdrop-filter: blur(20px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 102, 178, 0.2);
+            border-bottom: 1px solid rgba(255, 102, 178, 0.15);
         }
 
         .logo {
             font-family: var(--font-head);
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 900;
             color: var(--primary);
-            text-shadow: 0 0 15px rgba(255, 102, 178, 0.5);
-            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 0 0 15px rgba(255, 102, 178, 0.4);
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 3rem;
+            gap: 2.5rem;
         }
 
         .nav-links a {
             text-decoration: none;
             color: var(--text-main);
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             transition: 0.3s;
-            opacity: 0.7;
+            opacity: 0.6;
         }
 
         .nav-links a:hover {
@@ -90,7 +94,7 @@
 
         section {
             min-height: 100vh;
-            padding: 120px 10% 80px;
+            padding: 100px 10%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -98,159 +102,147 @@
             text-align: center;
         }
 
-        h1, h2 {
-            font-family: var(--font-head);
-            text-transform: uppercase;
+        .eye-star {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 15px var(--primary));
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
         }
 
         #home h1 {
-            font-size: clamp(3.5rem, 10vw, 6.5rem);
+            font-family: var(--font-head);
+            font-size: clamp(3rem, 12vw, 7rem);
             font-weight: 900;
-            line-height: 1;
+            line-height: 0.9;
             margin-bottom: 1.5rem;
-            background: linear-gradient(to bottom, #fff 30%, var(--primary));
+            background: linear-gradient(to bottom, #fff 40%, var(--primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        #home p {
-            font-size: 1.1rem;
-            max-width: 600px;
-            color: var(--text-dim);
-            margin-bottom: 2.5rem;
-        }
-
-        .btn-main {
-            padding: 16px 40px;
+        .btn-action {
+            padding: 18px 45px;
             background: var(--primary);
             color: white;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 5px;
             font-weight: 700;
             font-family: var(--font-head);
             text-transform: uppercase;
             letter-spacing: 2px;
             transition: 0.4s;
-            box-shadow: 0 10px 20px rgba(255, 102, 178, 0.2);
+            border: none;
+            cursor: pointer;
         }
 
-        .btn-main:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(255, 102, 178, 0.4);
-            filter: brightness(1.1);
+        .btn-action:hover {
+            box-shadow: 0 0 30px rgba(255, 102, 178, 0.5);
+            transform: translateY(-2px);
         }
 
-        .section-title {
-            font-size: 3rem;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 3px;
-            background: var(--primary);
-        }
-
-        .features-grid {
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
             width: 100%;
+            margin-top: 4rem;
         }
 
-        .feature-card {
+        .card {
             background: var(--card-bg);
             padding: 3rem 2rem;
-            border-radius: 12px;
+            border-radius: 15px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: 0.3s;
+            backdrop-filter: blur(10px);
         }
 
-        .feature-card:hover {
-            background: rgba(255, 102, 178, 0.05);
+        .card:hover {
             border-color: var(--primary);
-            transform: translateY(-5px);
+            background: rgba(255, 102, 178, 0.03);
         }
 
-        .feature-card h3 {
+        .card h3 {
             font-family: var(--font-head);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
             color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
 
-        .feature-card p {
-            color: var(--text-dim);
-            font-size: 0.95rem;
+        .mini-star {
+            width: 15px;
+            height: 15px;
+            background: var(--primary);
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
         }
 
-        .platform-wrapper {
+        .download-box {
             display: flex;
             gap: 2rem;
             flex-wrap: wrap;
-            justify-content: center;
+            margin-top: 3rem;
         }
 
-        .dl-card {
-            width: 350px;
-            background: #101014;
-            padding: 50px 30px;
-            border-radius: 16px;
-            border: 1px solid #222;
-            cursor: pointer;
-            transition: 0.4s ease;
+        .dl-option {
+            width: 320px;
+            padding: 40px;
+            background: #0a0a0e;
+            border: 1px solid #1a1a20;
+            border-radius: 20px;
             position: relative;
+            transition: 0.4s;
+            cursor: pointer;
         }
 
-        .dl-card.active:hover {
+        .dl-option.active:hover {
             border-color: var(--primary);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
         }
 
-        .dl-card.disabled {
-            opacity: 0.4;
+        .dl-option.disabled {
+            opacity: 0.3;
             cursor: not-allowed;
-        }
-
-        .dl-card h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .dl-card p {
-            color: var(--text-dim);
-            margin-bottom: 30px;
+            filter: grayscale(1);
         }
 
         .badge {
             position: absolute;
-            top: 15px;
-            right: 15px;
+            top: 20px;
+            right: 20px;
+            font-size: 0.65rem;
+            font-weight: 900;
             background: var(--primary);
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 3px;
         }
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            section { padding: 100px 5% 60px; }
+            section { padding: 80px 5%; }
         }
     </style>
 </head>
 <body>
 
-    <canvas id="bgCanvas"></canvas>
+    <canvas id="starfield"></canvas>
 
     <nav>
-        <div class="logo">AI X</div>
+        <div class="logo">
+            <div class="mini-star"></div>
+            AI X
+        </div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#features">Features</a></li>
@@ -259,75 +251,75 @@
     </nav>
 
     <section id="home">
-        <h1>BEYOND IDOL.</h1>
-        <p>The premium Blockman Go client experience. Optimized performance meets the legendary aesthetic of Ai Hoshino.</p>
-        <a href="#download" class="btn-main">Get Started</a>
+        <div class="eye-star"></div>
+        <h1>LIES ARE LOVE.</h1>
+        <p style="color: var(--text-dim); max-width: 600px; margin-bottom: 2rem;">The most sophisticated hack client for Blockman Go. Rule the lobby with the grace of a legendary idol.</p>
+        <a href="#download" class="btn-action">Download Now</a>
     </section>
 
     <section id="features">
-        <h2 class="section-title">Technical Specs</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <h3>Frame Boost</h3>
-                <p>Advanced rendering tweaks designed to push your FPS beyond the standard engine limits.</p>
+        <h2 style="font-family: var(--font-head); font-size: 3rem; margin-bottom: 1rem;">EXPLOIT POWER</h2>
+        <p style="color: var(--text-dim); margin-bottom: 3rem;">Engineered for total dominance.</p>
+        
+        <div class="grid">
+            <div class="card">
+                <h3><div class="mini-star"></div> Movement</h3>
+                <p style="color: var(--text-dim);">Fly, Infinite Jump, High Step, and Speed exploits to navigate the map instantly.</p>
             </div>
-            <div class="feature-card">
-                <h3>Star UI</h3>
-                <p>Every menu, button, and toggle is crafted with a modern, idol-inspired visual language.</p>
+            <div class="card">
+                <h3><div class="mini-star"></div> Combat</h3>
+                <p style="color: var(--text-dim);">Advanced Aura, Auto-Clicker, and Reach modules with bypass configurations.</p>
             </div>
-            <div class="feature-card">
-                <h3>Zero Latency</h3>
-                <p>Network packet optimization for the lowest possible ping during competitive matches.</p>
+            <div class="card">
+                <h3><div class="mini-star"></div> Visuals</h3>
+                <p style="color: var(--text-dim);">Full ESP, Tracers, and X-Ray. See every player and chest through any obstacle.</p>
             </div>
         </div>
     </section>
 
     <section id="download">
-        <h2 class="section-title">Select Platform</h2>
-        <div class="platform-wrapper">
-            <div class="dl-card active" onclick="window.location.href='Android.html'">
+        <h2 style="font-family: var(--font-head); font-size: 3rem; margin-bottom: 3rem;">CHOOSE PLATFORM</h2>
+        
+        <div class="download-box">
+            <div class="dl-option active" onclick="window.location.href='Android.html'">
                 <div class="badge">STABLE</div>
-                <h2>Android</h2>
-                <p>Native APK for mobile performance.</p>
-                <div class="btn-main" style="padding: 12px 20px; font-size: 0.8rem;">Download v1.0</div>
+                <h2 style="margin-bottom: 10px;">Android</h2>
+                <p style="color: var(--text-dim); margin-bottom: 25px;">Full APK mobile support.</p>
+                <div class="btn-action" style="padding: 12px 25px; font-size: 0.75rem;">Download APK</div>
             </div>
 
-            <div class="dl-card disabled" onclick="alert('Ai X for Windows is currently in development!')">
-                <div class="badge" style="background: #333;">SOON</div>
-                <h2>Windows</h2>
-                <p>The ultimate desktop client.</p>
-                <div class="btn-main" style="background: #333; padding: 12px 20px; font-size: 0.8rem;">Coming Soon</div>
+            <div class="dl-option disabled" onclick="alert('Windows Client is coming soon!')">
+                <div class="badge" style="background: #333;">V2 SOON</div>
+                <h2 style="margin-bottom: 10px;">Windows</h2>
+                <p style="color: var(--text-dim); margin-bottom: 25px;">PC Client under development.</p>
+                <div class="btn-action" style="background: #222; padding: 12px 25px; font-size: 0.75rem;">Coming Soon</div>
             </div>
         </div>
     </section>
 
     <script>
-        const canvas = document.getElementById('bgCanvas');
+        const canvas = document.getElementById('starfield');
         const ctx = canvas.getContext('2d');
-        let particles = [];
+        let stars = [];
 
-        function init() {
+        function resize() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         }
+        window.addEventListener('resize', resize);
+        resize();
 
-        window.addEventListener('resize', init);
-        init();
-
-        class Particle {
+        class Star {
             constructor() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
                 this.size = Math.random() * 1.5;
-                this.speedY = Math.random() * 0.4 + 0.1;
-                this.opacity = Math.random() * 0.5;
+                this.opacity = Math.random();
+                this.speed = Math.random() * 0.2;
             }
             update() {
-                this.y -= this.speedY;
-                if (this.y < 0) {
-                    this.y = canvas.height;
-                    this.x = Math.random() * canvas.width;
-                }
+                this.y -= this.speed;
+                if (this.y < 0) this.y = canvas.height;
             }
             draw() {
                 ctx.fillStyle = `rgba(255, 102, 178, ${this.opacity})`;
@@ -337,26 +329,23 @@
             }
         }
 
-        for (let i = 0; i < 100; i++) particles.push(new Particle());
+        for (let i = 0; i < 150; i++) stars.push(new Star());
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
+            stars.forEach(s => { s.update(); s.draw(); });
             requestAnimationFrame(animate);
         }
         animate();
 
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', function(e) {
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                const id = this.getAttribute('href');
-                const target = document.querySelector(id);
-                const offset = 80;
-                const position = target.offsetTop - offset;
-                window.scrollTo({ top: position, behavior: 'smooth' });
+                const target = document.querySelector(this.getAttribute('href'));
+                window.scrollTo({
+                    top: target.offsetTop - 70,
+                    behavior: 'smooth'
+                });
             });
         });
     </script>
