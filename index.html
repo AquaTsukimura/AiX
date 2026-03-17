@@ -74,7 +74,7 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2.5rem;
+            gap: 2rem;
         }
 
         .nav-links a {
@@ -95,7 +95,7 @@
 
         section {
             min-height: 100vh;
-            padding: 100px 10%;
+            padding: 120px 10% 80px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -156,30 +156,40 @@
             transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
             backdrop-filter: blur(10px);
             position: relative;
-            overflow: hidden;
         }
 
         .card:hover {
             transform: scale(1.05) translateZ(50px);
             border-color: var(--primary);
-            background: rgba(255, 102, 178, 0.08);
+            background: rgba(255, 102, 178, 0.1);
             box-shadow: 0 0 50px rgba(255, 102, 178, 0.2);
             z-index: 10;
         }
 
-        .card h3 {
-            font-family: var(--font-head);
-            color: var(--primary);
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
+        .credit-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            transition: 0.3s;
         }
 
-        .download-box {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-top: 3rem;
+        .credit-card:hover {
+            border-color: var(--primary);
+            background: rgba(255, 102, 178, 0.05);
+        }
+
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            object-fit: cover;
+            background: #111;
         }
 
         .dl-card {
@@ -188,7 +198,6 @@
             background: #08080c;
             border: 1px solid #1a1a22;
             border-radius: 24px;
-            position: relative;
             transition: 0.4s ease;
             cursor: pointer;
         }
@@ -196,13 +205,6 @@
         .dl-card.active:hover {
             border-color: var(--primary);
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-        }
-
-        .dl-card.disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-            filter: grayscale(1);
         }
 
         .btn {
@@ -219,24 +221,11 @@
             transition: 0.3s;
             border: none;
             cursor: pointer;
-            box-shadow: 0 10px 20px rgba(255, 102, 178, 0.3);
         }
 
         .btn:hover {
             background: white;
             color: var(--primary);
-            transform: scale(1.05);
-        }
-
-        .badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 0.7rem;
-            font-weight: 900;
-            background: var(--primary);
-            padding: 5px 12px;
-            border-radius: 4px;
         }
 
         @media (max-width: 768px) {
@@ -250,13 +239,11 @@
     <canvas id="starfield"></canvas>
 
     <nav>
-        <div class="logo">
-            <div style="width: 15px; height: 15px; background: var(--primary); clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);"></div>
-            AI X
-        </div>
+        <div class="logo">AI X</div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#features">Features</a></li>
+            <li><a href="#credits">Credits</a></li>
             <li><a href="#download">Download</a></li>
         </ul>
     </nav>
@@ -265,47 +252,61 @@
         <div class="star-eye"></div>
         <p class="lies-tag">LIES ARE LOVE</p>
         <h1>AI X CLIENT.</h1>
-        <p style="color: var(--text-dim); max-width: 650px; margin-bottom: 3rem; font-size: 1.1rem;">The ultimate Blockman Go exploitation suite. Become the star of the server with unmatched hack modules and idol-tier visuals.</p>
-        <a href="#download" class="btn">Access Client</a>
+        <p style="color: var(--text-dim); max-width: 650px;">The ultimate Blockman Go exploitation suite. Become the star of the server with unmatched hack modules.</p>
+        <a href="#download" class="btn" style="margin-top: 2rem;">Access Client</a>
     </section>
 
     <section id="features">
         <p class="lies-tag">LIES ARE LOVE</p>
-        <h2 style="font-family: var(--font-head); font-size: 3.5rem; margin-bottom: 1rem;">IDOL EXPLOITS</h2>
-        
+        <h2 style="font-family: var(--font-head); font-size: 3rem; margin-bottom: 3rem;">IDOL EXPLOITS</h2>
         <div class="grid">
             <div class="card">
                 <h3>Movement</h3>
-                <p style="color: var(--text-dim);">Fly, Infinite Jump, and Speed scripts optimized for all game modes.</p>
+                <p style="color: var(--text-dim);">Fly, Infinite Jump, and Speed scripts optimized for bypass.</p>
             </div>
             <div class="card">
                 <h3>Combat</h3>
-                <p style="color: var(--text-dim);">Highly configurable KillAura, Reach, and Hitbox Expanders.</p>
+                <p style="color: var(--text-dim);">Configurable KillAura, Reach, and Hitbox Expanders.</p>
             </div>
             <div class="card">
                 <h3>Visuals</h3>
-                <p style="color: var(--text-dim);">Full ESP, Tracers, and Storage ESP to see everything behind the stage.</p>
+                <p style="color: var(--text-dim);">Full ESP, Tracers, and Storage ESP for total awareness.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="credits">
+        <p class="lies-tag">LIES ARE LOVE</p>
+        <h2 style="font-family: var(--font-head); font-size: 3rem; margin-bottom: 3rem;">THE BACKSTAGE</h2>
+        <div class="grid">
+            <div class="credit-card">
+                <img src="https://github.com/AquaTsukimura/AiX/blob/main/img/71daebb87416096b29240dde8095995b.png?raw=true" class="profile-img" alt="Aqua">
+                <h3 style="color: var(--primary); font-family: var(--font-head);">AQUA</h3>
+                <p style="font-size: 0.8rem; letter-spacing: 2px;">HEAD DEVELOPER</p>
+                <p style="color: var(--text-dim);">Discord: ?</p>
+            </div>
+            <div class="credit-card">
+                <div class="profile-img" style="display: flex; align-items: center; justify-content: center; background: #222; font-weight: bold; font-size: 2rem;">E</div>
+                <h3 style="color: var(--primary); font-family: var(--font-head);">EARTH</h3>
+                <p style="font-size: 0.8rem; letter-spacing: 2px;">ASSISTANT</p>
+                <p style="color: var(--text-dim);">Discord: @yezxow</p>
             </div>
         </div>
     </section>
 
     <section id="download">
         <p class="lies-tag">LIES ARE LOVE</p>
-        <h2 style="font-family: var(--font-head); font-size: 3.5rem; margin-bottom: 3rem;">DEPLOYMENT</h2>
-        
-        <div class="download-box">
+        <h2 style="font-family: var(--font-head); font-size: 3rem; margin-bottom: 3rem;">DEPLOYMENT</h2>
+        <div class="download-box" style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center;">
             <div class="dl-card active" onclick="window.location.href='Android.html'">
-                <div class="badge">STABLE</div>
                 <h2 style="margin-bottom: 10px; font-family: var(--font-head);">ANDROID</h2>
-                <p style="color: var(--text-dim); margin-bottom: 30px;">Universal APK for all mobile users.</p>
-                <div class="btn" style="padding: 12px 25px; font-size: 0.8rem;">Download</div>
+                <p style="color: var(--text-dim); margin-bottom: 20px;">Universal APK for mobile.</p>
+                <div class="btn" style="padding: 10px 20px; font-size: 0.8rem;">Download</div>
             </div>
-
-            <div class="dl-card disabled" onclick="alert('The PC Client is currently in production. Lies are love!')">
-                <div class="badge" style="background: #333;">COMING SOON</div>
+            <div class="dl-card active" style="opacity: 0.5; cursor: not-allowed;" onclick="alert('PC Coming Soon')">
                 <h2 style="margin-bottom: 10px; font-family: var(--font-head);">WINDOWS</h2>
-                <p style="color: var(--text-dim); margin-bottom: 30px;">Native PC Client for desktop power.</p>
-                <div class="btn" style="background: #222; padding: 12px 25px; font-size: 0.8rem;">Locked</div>
+                <p style="color: var(--text-dim); margin-bottom: 20px;">PC Client Coming Soon.</p>
+                <div class="btn" style="padding: 10px 20px; font-size: 0.8rem; background: #333;">Locked</div>
             </div>
         </div>
     </section>
@@ -314,51 +315,23 @@
         const canvas = document.getElementById('starfield');
         const ctx = canvas.getContext('2d');
         let stars = [];
-
-        function resize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
         window.addEventListener('resize', resize);
         resize();
-
         class Star {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2;
-                this.opacity = Math.random();
-                this.speed = Math.random() * 0.3;
-            }
-            update() {
-                this.y -= this.speed;
-                if (this.y < 0) this.y = canvas.height;
-            }
-            draw() {
-                ctx.fillStyle = `rgba(255, 102, 178, ${this.opacity})`;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
+            constructor() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.size = Math.random() * 2; this.opacity = Math.random(); this.speed = Math.random() * 0.3; }
+            update() { this.y -= this.speed; if (this.y < 0) this.y = canvas.height; }
+            draw() { ctx.fillStyle = `rgba(255, 102, 178, ${this.opacity})`; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
         }
-
-        for (let i = 0; i < 200; i++) stars.push(new Star());
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            stars.forEach(s => { s.update(); s.draw(); });
-            requestAnimationFrame(animate);
-        }
+        for (let i = 0; i < 150; i++) stars.push(new Star());
+        function animate() { ctx.clearRect(0, 0, canvas.width, canvas.height); stars.forEach(s => { s.update(); s.draw(); }); requestAnimationFrame(animate); }
         animate();
 
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                window.scrollTo({
-                    top: target.offsetTop - 70,
-                    behavior: 'smooth'
-                });
+                window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
             });
         });
     </script>
