@@ -1,1 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ai X | Blockman Go Client</title>
+    <style>
+        :root {
+            --primary-pink: #ff66b2;
+            --star-gold: #ffd700;
+            --dark-bg: #0f0c29;
+            --glass: rgba(255, 255, 255, 0.1);
+        }
 
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            width: 400px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px var(--primary-pink);
+        }
+
+        p {
+            color: #ddd;
+            margin-bottom: 2rem;
+        }
+
+        .platform-tabs {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .tab {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .android-btn {
+            background-color: var(--primary-pink);
+            color: white;
+        }
+
+        .pc-btn {
+            background-color: #444;
+            color: #888;
+            cursor: not-allowed;
+            position: relative;
+        }
+
+        .tab:hover:not(.pc-btn) {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 102, 178, 0.4);
+        }
+
+        .badge {
+            font-size: 0.7rem;
+            display: block;
+            color: var(--star-gold);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Ai <span style="color: var(--primary-pink);">X</span></h1>
+        <p>The ultimate Blockman Go experience.</p>
+
+        <div class="platform-tabs">
+            <button class="tab android-btn" onclick="location.href='Android.html'">
+                Android
+                <span class="badge">Live Now</span>
+            </button>
+            
+            <button class="tab pc-btn" onclick="alert('The PC version is currently under development!')">
+                Windows
+                <span class="badge" style="color: #aaa;">Coming Soon</span>
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>
