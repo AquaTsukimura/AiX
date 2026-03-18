@@ -33,7 +33,7 @@
             background-color: var(--bg);
             color: var(--text-main);
             overflow-x: hidden;
-            perspective: 1000px;
+            perspective: 1200px;
         }
 
         #starfield {
@@ -85,10 +85,7 @@
             opacity: 0.6;
         }
 
-        .nav-links a:hover {
-            opacity: 1;
-            color: var(--primary);
-        }
+        .nav-links a:hover { opacity: 1; color: var(--primary); }
 
         section {
             min-height: 100vh;
@@ -100,6 +97,22 @@
             text-align: center;
         }
 
+        /* --- THE STAR EYE --- */
+        .star-eye {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, var(--primary), #fff, var(--secondary));
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 15px var(--primary));
+            animation: eyePulse 3s infinite;
+        }
+
+        @keyframes eyePulse {
+            0%, 100% { transform: scale(1) rotate(0deg); filter: brightness(1) drop-shadow(0 0 15px var(--primary)); }
+            50% { transform: scale(1.1) rotate(10deg); filter: brightness(1.3) drop-shadow(0 0 25px var(--primary)); }
+        }
+
         .lies-tag {
             font-family: var(--font-head);
             font-weight: 900;
@@ -108,6 +121,7 @@
             margin-bottom: 1rem;
             font-size: 1.2rem;
             opacity: 0.8;
+            text-transform: uppercase;
         }
 
         h1 {
@@ -121,28 +135,26 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* SHOWCASE IMAGE STYLING */
+        /* UI IMAGE STYLING */
         .showcase-container {
-            margin-top: 3rem;
+            margin-top: 2rem;
             width: 100%;
             max-width: 900px;
             border-radius: 20px;
             overflow: hidden;
             border: 2px solid var(--primary);
-            box-shadow: 0 0 40px rgba(255, 102, 178, 0.3);
-            transition: transform 0.5s ease;
+            box-shadow: 0 0 50px rgba(255, 102, 178, 0.4);
+            transform: rotateX(10deg);
+            transition: 0.5s ease;
         }
 
         .showcase-container:hover {
-            transform: scale(1.02);
+            transform: rotateX(0deg) scale(1.02);
         }
 
-        .showcase-img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+        .showcase-img { width: 100%; height: auto; display: block; }
 
+        /* FEATURES WITH WARP EFFECT */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -158,31 +170,40 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
             backdrop-filter: blur(10px);
+            position: relative;
         }
 
         .card:hover {
-            transform: scale(1.05) translateZ(50px);
+            transform: scale(1.08) translateZ(60px); /* Warp to center effect */
             border-color: var(--primary);
-            background: rgba(255, 102, 178, 0.1);
+            background: rgba(255, 102, 178, 0.12);
+            box-shadow: 0 0 60px rgba(255, 102, 178, 0.25);
+            z-index: 50;
         }
 
+        .card h3 { color: var(--primary); font-family: var(--font-head); font-size: 1.8rem; margin-bottom: 1rem; text-transform: uppercase;}
+
+        /* CREDITS */
         .credit-card {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 2rem;
+            padding: 2.5rem;
             border-radius: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 1rem;
+            transition: 0.4s;
         }
 
+        .credit-card:hover { border-color: var(--primary); background: rgba(255, 102, 178, 0.05); }
+
         .profile-img {
-            width: 100px;
-            height: 100px;
+            width: 100px; height: 100px;
             border-radius: 50%;
             border: 2px solid var(--primary);
             object-fit: cover;
+            box-shadow: 0 0 15px var(--primary);
         }
 
         .btn {
@@ -198,16 +219,12 @@
             letter-spacing: 3px;
             transition: 0.3s;
             cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 102, 178, 0.3);
         }
 
-        .btn:hover {
-            background: white;
-            color: var(--primary);
-        }
+        .btn:hover { background: white; color: var(--primary); transform: scale(1.05); }
 
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-        }
+        @media (max-width: 768px) { .nav-links { display: none; } }
     </style>
 </head>
 <body>
@@ -218,17 +235,18 @@
         <div class="logo">AI X</div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#showcase">Interface</a></li>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#credits">Credits</a></li>
-            <li><a href="#download">Download</a></li>
+            <li><a href="#showcase">UI</a></li>
+            <li><a href="#features">Hacks</a></li>
+            <li><a href="#credits">Staff</a></li>
+            <li><a href="#download">Get</a></li>
         </ul>
     </nav>
 
     <section id="home">
+        <div class="star-eye"></div>
         <p class="lies-tag">LIES ARE LOVE</p>
         <h1>AI X CLIENT.</h1>
-        <p style="color: var(--text-dim); max-width: 650px;">The ultimate Blockman Go exploitation suite. Rule the lobby with idol-tier elegance.</p>
+        <p style="color: var(--text-dim); max-width: 650px;">The definitive hack suite for Blockman Go players who demand style and power. Bypassing limits with idol-tier performance.</p>
         <a href="#download" class="btn" style="margin-top: 2rem;">Access Client</a>
     </section>
 
@@ -245,16 +263,16 @@
         <h2 style="font-family: var(--font-head); font-size: 3rem;">IDOL EXPLOITS</h2>
         <div class="grid">
             <div class="card">
-                <h3 style="color:var(--primary); font-family:var(--font-head); font-size:1.8rem;">Movement</h3>
-                <p style="color: var(--text-dim);">Fly, Infinite Jump, and Speed scripts optimized for bypass.</p>
+                <h3>Movement</h3>
+                <p style="color: var(--text-dim);">Fly, Infinite Jump, and Speed scripts optimized for latest bypasses.</p>
             </div>
             <div class="card">
-                <h3 style="color:var(--primary); font-family:var(--font-head); font-size:1.8rem;">Combat</h3>
-                <p style="color: var(--text-dim);">Configurable KillAura, Reach, and Hitbox Expanders.</p>
+                <h3>Combat</h3>
+                <p style="color: var(--text-dim);">Configurable KillAura, Reach, and Hitbox Expanders for total dominance.</p>
             </div>
             <div class="card">
-                <h3 style="color:var(--primary); font-family:var(--font-head); font-size:1.8rem;">Visuals</h3>
-                <p style="color: var(--text-dim);">Full ESP, Tracers, and Storage ESP for total awareness.</p>
+                <h3>Visuals</h3>
+                <p style="color: var(--text-dim);">Full ESP, Tracers, and Storage ESP. See through every lie on the stage.</p>
             </div>
         </div>
     </section>
@@ -265,14 +283,14 @@
         <div class="grid">
             <div class="credit-card">
                 <img src="https://github.com/AquaTsukimura/AiX/blob/main/img/71daebb87416096b29240dde8095995b.png?raw=true" class="profile-img" alt="Aqua">
-                <h3 style="color: var(--primary); font-family: var(--font-head);">AQUA</h3>
-                <p style="font-size: 0.8rem;">HEAD DEVELOPER</p>
+                <h3>AQUA</h3>
+                <p style="font-size: 0.8rem; letter-spacing: 2px;">HEAD DEVELOPER</p>
                 <p style="color: var(--text-dim);">Discord: ?</p>
             </div>
             <div class="credit-card">
                 <div class="profile-img" style="display:flex; align-items:center; justify-content:center; background:#222; font-size:2rem; font-weight:bold;">E</div>
-                <h3 style="color: var(--primary); font-family: var(--font-head);">EARTH</h3>
-                <p style="font-size: 0.8rem;">ASSISTANT</p>
+                <h3>EARTH</h3>
+                <p style="font-size: 0.8rem; letter-spacing: 2px;">ASSISTANT</p>
                 <p style="color: var(--text-dim);">Discord: @yezxow</p>
             </div>
         </div>
@@ -280,16 +298,16 @@
 
     <section id="download">
         <p class="lies-tag">LIES ARE LOVE</p>
-        <h2 style="font-family: var(--font-head); font-size: 3rem; margin-bottom: 3rem;">DEPLOYMENT</h2>
+        <h2 style="font-family: var(--font-head); font-size: 3.5rem; margin-bottom: 3rem;">CHOOSE PLATFORM</h2>
         <div style="display:flex; gap:2rem; flex-wrap:wrap; justify-content:center;">
-            <div class="card" style="padding:40px; width:300px; cursor:pointer;" onclick="window.location.href='Android.html'">
+            <div class="card" style="padding:40px; width:320px; cursor:pointer;" onclick="window.location.href='Android.html'">
                 <h2 style="font-family:var(--font-head);">ANDROID</h2>
-                <p style="margin:15px 0;">Universal APK</p>
+                <p style="margin:15px 0; color: var(--text-dim);">Universal .APK</p>
                 <div class="btn" style="padding:10px 20px; font-size:0.8rem;">Download</div>
             </div>
-            <div class="card" style="padding:40px; width:300px; opacity:0.5; cursor:not-allowed;" onclick="alert('Soon')">
+            <div class="card" style="padding:40px; width:320px; opacity:0.4; cursor:not-allowed;" onclick="alert('Lies are love - PC Coming Soon')">
                 <h2 style="font-family:var(--font-head);">WINDOWS</h2>
-                <p style="margin:15px 0;">Coming Soon</p>
+                <p style="margin:15px 0; color: var(--text-dim);">Coming Soon</p>
                 <div class="btn" style="padding:10px 20px; font-size:0.8rem; background:#444;">Locked</div>
             </div>
         </div>
